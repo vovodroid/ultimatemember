@@ -60,8 +60,14 @@
 	function um_send_password_change_email( $args ){
 
 		global $ultimatemember;
+		extract(  $args );
+
+		um_fetch_user( $user_id );
 
 		$ultimatemember->user->password_changed();
+
+		um_reset_user();
+
 
 		return false;
 	}
