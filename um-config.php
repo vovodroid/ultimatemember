@@ -589,6 +589,14 @@ $this->sections[] = array(
         ),
 
 		array(
+                'id'       => 'bcc_user_emails',
+                'type'     => 'switch',
+                'title'    => __( 'BCC user emails to Admin','ultimatemember' ),
+				'default'  => 0,
+				'desc' 	   => __('Whether to BCC all user emails to admin address set in Notifocation page.','ultimatemember'),
+        ),
+
+		array(
 				'id'       => 'mail_from',
                 'type'     => 'text',
                 'title'    => __( 'Mail appears from','ultimatemember' ),
@@ -610,14 +618,6 @@ $this->sections[] = array(
                 'title'    => __( 'Use HTML for E-mails?','ultimatemember' ),
 				'default'  => 0,
 				'desc' 	   => __('If you enable HTML for e-mails, you can customize the HTML e-mail templates found in <strong>templates/email</strong> folder.','ultimatemember'),
-        ),
-
-        array(
-                'id'       => 'bcc_user_emails',
-                'type'     => 'switch',
-                'title'    => __( 'BCC user emails to Admin','ultimatemember' ),
-				'default'  => 0,
-				'desc' 	   => __('Whether to BCC all user emails to admin address set in Notifocation page.','ultimatemember'),
         ),
 
         array(
