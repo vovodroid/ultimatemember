@@ -100,7 +100,7 @@ class UM_Mail {
 		$this->message = um_convert_tags( $this->message, $args );
 		
 		// Send mail
-         if (um_get_option('emails_off') != 1)
+         if (um_get_option('emails_on') == 1)
             wp_mail( $email, $this->subject, $this->message, $this->headers, $this->attachments );
 		remove_filter( 'wp_mail_content_type', array(&$this, 'set_content_type')  );
 

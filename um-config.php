@@ -579,11 +579,11 @@ $this->sections[] = array(
     'fields'     => array(
 
         array(
-                'id'       => 'emails_off',
+                'id'       => 'emails_on',
                 'type'     => 'switch',
-                'title'    => __( 'Disable all emails.','ultimatemember' ),
-				'default'  => 0,
-				'desc' 	   => __('Disable actual send, write to debug.log file. Useful for tests.','ultimatemember'),
+                'title'    => __( 'Enable all emails.','ultimatemember' ),
+				'default'  => 1,
+				'desc' 	   => __('Enable actual send. Useful for tests.','ultimatemember'),
 				'on'			=> __('Yes','ultimatemember'),
 				'off'			=> __('No','ultimatemember'),
         ),
