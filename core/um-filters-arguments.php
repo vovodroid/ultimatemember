@@ -30,11 +30,20 @@
 
 		if ($ultimatemember->shortcodes->message_mode == true) {
 			$args['template'] = 'message';
-			um_fetch_user( $_REQUEST['uid'] );
 
-			$ultimatemember->shortcodes->custom_message = um_user( um_user('status')  . '_message' );
-			
-			um_reset_user();
+			if (isset($_REQUEST['uid'])) {
+				um_fetch_user( $_REQUEST['uid'] );
+
+				$ultimatemember->shortcodes->custom_message = um_user( um_user('status')  . '_message' );
+
+
+				um_reset_user();
+			} else {
+				if (isset($_REQUEST['message']) && $_REQUEST['message'] == 'checkmail')
+					$ultimatemember->shortcodes->custom_message = $ultimatemember->query->get_meta_value('_um_checkmail_message', null, __('Thank you for registering. Before you can login we need you to activate your account by clicking the activation link in the email we just sent you.','ultimatemember'));
+				else
+					$ultimatemember->shortcodes->custom_message = 'Error displaying message';
+			}
 		}
 		
 		foreach( $args as $k => $v ) {

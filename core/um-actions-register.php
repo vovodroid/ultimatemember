@@ -222,8 +222,10 @@
 				if ( um_user( $status . '_action' ) == 'show_message' && um_user( $status . '_message' ) != '' ) {
 					$url = $ultimatemember->permalinks->get_current_url();
 					$url =  add_query_arg( 'message', esc_attr( $status ), $url );
-					$url =  add_query_arg( 'uid', esc_attr( um_user('ID') ), $url );
-					$url =  add_query_arg( 'um_form_id', esc_attr( $form_id ), $url );
+					if ($status !== 'checkmail') {
+						$url =  add_query_arg( 'uid', esc_attr( um_user('ID') ), $url );
+						$url =  add_query_arg( 'um_form_id', esc_attr( $form_id ), $url );
+					}
 
 					exit( wp_redirect( $url ) );
 				}
