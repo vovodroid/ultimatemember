@@ -593,6 +593,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'BCC user emails to Admin','ultimatemember' ),
 				'default'  => 0,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to BCC all user emails to admin address set in Notifocation page.','ultimatemember'),
         ),
 
@@ -601,6 +602,7 @@ $this->sections[] = array(
                 'type'     => 'text',
                 'title'    => __( 'Mail appears from','ultimatemember' ),
                 'desc' 	   => __( 'e.g. Site Name','ultimatemember' ),
+				'required' => array( 'emails_on', '=', 1 ),
                 'default'  => get_bloginfo('name'),
         ),
 
@@ -609,6 +611,7 @@ $this->sections[] = array(
                 'type'     => 'text',
                 'title'    => __( 'Mail appears from address','ultimatemember' ),
                 'desc' => __( 'e.g. admin@companyname.com','ultimatemember' ),
+				'required' => array( 'emails_on', '=', 1 ),			
                 'default'  => get_bloginfo('admin_email'),
         ),
 
@@ -617,6 +620,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Use HTML for E-mails?','ultimatemember' ),
 				'default'  => 0,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('If you enable HTML for e-mails, you can customize the HTML e-mail templates found in <strong>templates/email</strong> folder.','ultimatemember'),
         ),
 
@@ -625,6 +629,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Account Welcome Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when his account is automatically approved','ultimatemember'),
         ),
 
@@ -660,6 +665,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Account Activation Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array('emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when his account needs e-mail activation','ultimatemember'),
         ),
 
@@ -692,6 +698,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Pending Review Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when his account needs admin review','ultimatemember'),
         ),
 
@@ -724,6 +731,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Account Approved Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when his account is approved','ultimatemember'),
         ),
 
@@ -760,6 +768,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Account Rejected Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when his account is rejected','ultimatemember'),
         ),
 
@@ -791,6 +800,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Account Deactivated Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when his account is deactivated','ultimatemember'),
         ),
 
@@ -822,6 +832,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Account Deleted Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when his account is deleted','ultimatemember'),
         ),
 
@@ -853,6 +864,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Password Reset Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when he request to reset password (Recommended, please keep on)','ultimatemember'),
         ),
 
@@ -885,6 +897,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Password Changed Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),	
 				'desc' 	   => __('Whether to send the user an email when he changed password (Recommended, please keep on)','ultimatemember'),
         ),
 
@@ -916,6 +929,7 @@ $this->sections[] = array(
                 'type'     => 'switch',
                 'title'    => __( 'Email Changed Email','ultimatemember' ),
 				'default'  => 1,
+				'required' => array( 'emails_on', '=', 1 ),
 				'desc' 	   => __('Whether to send the user an email when he changed email (Recommended, please keep on)','ultimatemember'),
         ),
 
