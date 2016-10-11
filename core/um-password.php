@@ -21,10 +21,15 @@ class UM_Password {
 	
 		global $ultimatemember;
 		
-		if ( isset($_REQUEST['act']) && $_REQUEST['act'] == 'reset_password' && isset($_REQUEST['hash']) && strlen($_REQUEST['hash']) == 40 &&
-			isset($_REQUEST['user_id']) && is_numeric($_REQUEST['user_id']) ) {
+		if ( isset($_REQUEST['act']) && $_REQUEST['act'] == 'reset_password' && isset($_REQUEST['hash']) && strlen($_REQUEST['hash']) == 40 ) {
 			
-				$user_id = absint( $_REQUEST['user_id'] );
+				$users = get_users("meta_value={$_REQUEST['hash']}");
+				if ( count($users) != 1 )
+					wp_die( __('This is not a valid hash, or it has expired.','ultimatemember') );
+
+				$user_id = $users[0]->ID;
+				$_REQUEST['user_id'] = $user_id;//needed later in 'load' function
+
 				delete_option( "um_cache_userdata_{$user_id}" );
 				
 				um_fetch_user( $user_id );
@@ -58,7 +63,6 @@ class UM_Password {
 				
 		$url =  add_query_arg( 'act', 'reset_password', um_get_core_page('password-reset') );
 		$url =  add_query_arg( 'hash', esc_attr( um_user('reset_pass_hash') ), $url );
-		$url =  add_query_arg( 'user_id', esc_attr( um_user('ID') ), $url );
 		
 		return $url;
 		
