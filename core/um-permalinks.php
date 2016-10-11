@@ -153,10 +153,13 @@ class UM_Permalinks {
 	function activate_account_via_email_link(){
 		global $ultimatemember;
 
-		if ( isset($_REQUEST['act']) && $_REQUEST['act'] == 'activate_via_email' && isset($_REQUEST['hash']) && is_string($_REQUEST['hash']) && strlen($_REQUEST['hash']) == 40 &&
-			isset($_REQUEST['user_id']) && is_numeric($_REQUEST['user_id']) ) { // valid token
+		if ( isset($_REQUEST['act']) && $_REQUEST['act'] == 'activate_via_email' && isset($_REQUEST['hash']) && is_string($_REQUEST['hash']) && strlen($_REQUEST['hash']) == 40 ) { // valid token
 
-				$user_id = absint( $_REQUEST['user_id'] );
+				$users = get_users("meta_value={$_REQUEST['hash']}");
+				if ( count($users) != 1 )
+					wp_die( __( 'This activation link is expired or have already been used.','ultimatemember' ) );
+
+				$user_id = $users[0]->ID;
 				delete_option( "um_cache_userdata_{$user_id}" );
 
 				um_fetch_user( $user_id );
@@ -202,7 +205,6 @@ class UM_Permalinks {
 		$url =  apply_filters( 'um_activate_url', home_url() );
 		$url =  add_query_arg( 'act', 'activate_via_email', $url );
 		$url =  add_query_arg( 'hash', um_user('account_secret_hash'), $url );
-		$url =  add_query_arg( 'user_id', um_user('ID'), $url );
 
 		return $url;
 	}
