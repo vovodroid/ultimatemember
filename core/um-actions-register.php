@@ -94,6 +94,7 @@
 		$creds['user_email'] = $user_email;
 
 		$args['submitted'] = array_merge( $args['submitted'], $creds);
+		$args['submitted']['ip'] = um_user_ip();
 		$args = array_merge($args, $creds);
 		
 		unset( $args['user_id'] );
